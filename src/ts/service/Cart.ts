@@ -17,15 +17,10 @@ export default class Cart {
   }
 
   totalSumDiscounted(discount: number): number {
-    return (this._items.reduce((acc: number, item: Buyable) =>
-    acc + item.price, 0)) - discount
+    return this.totalSum - discount;
   }
 
   removeItem(id: number): void {
-    for(let i = 0; i < this._items.length; i++) {
-      if (this._items[i].id === id) {
-        this._items.splice(i, 1)
-      }
-    }
+    this._items = this._items.filter(item => item.id !== id);
   }
 }
